@@ -78,7 +78,7 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        displayToast(parent.getItemAtPosition(position).toString());
+        //displayToast(parent.getItemAtPosition(position).toString());
     }
 
     @Override
