@@ -30,7 +30,7 @@ public class FinishActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finish);
         Intent intent = getIntent();
-        pedido = intent.getStringExtra("mensagem");
+        pedido = intent.getStringExtra("pedido");
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://provaddm2018.atwebpages.com/")
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))
@@ -45,15 +45,12 @@ public class FinishActivity extends AppCompatActivity {
                 int statusCode = response.code();
                 List<Produto> produtos = response.body();
 
-
-
                 textView=(TextView)findViewById(R.id.valor_do_pedido);
 
                 for(Produto aux: produtos){
-                    Log.e("---------------", aux.getProduto());
-                    Log.e("", pedido);
+
                     if(aux.getProduto().equals(pedido)){
-                        textView.setText(aux.getProduto());
+                        textView.setText("R$" + aux.getValor() + ".00");
 
                     }
                 }
