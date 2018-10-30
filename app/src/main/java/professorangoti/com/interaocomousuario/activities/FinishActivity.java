@@ -29,9 +29,10 @@ public class FinishActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finish);
-
-/**        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://provaddm2018.atwebpages.com/precos")
+        Intent intent = getIntent();
+        pedido = intent.getStringExtra("mensagem");
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://provaddm2018.atwebpages.com/")
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))
                 .build();
 
@@ -44,14 +45,16 @@ public class FinishActivity extends AppCompatActivity {
                 int statusCode = response.code();
                 List<Produto> produtos = response.body();
 
-                Intent intent = getIntent();
-                pedido = intent.getStringExtra("mensagem");
 
-                textView.findViewById(R.id.valor_do_pedido);
+
+                textView=(TextView)findViewById(R.id.valor_do_pedido);
 
                 for(Produto aux: produtos){
+                    Log.e("---------------", aux.getProduto());
+                    Log.e("", pedido);
                     if(aux.getProduto().equals(pedido)){
                         textView.setText(aux.getProduto());
+
                     }
                 }
             }
@@ -60,6 +63,6 @@ public class FinishActivity extends AppCompatActivity {
             public void onFailure(Call<List<Produto>> call, Throwable t) {
 
             }
-        });**/
+        });
     }
 }

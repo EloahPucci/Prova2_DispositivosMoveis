@@ -9,6 +9,6 @@ import retrofit2.http.Path;
 
 public interface ApiEndpoint {
 
-    @GET("produtos/{id}")
+    @GET("precos")
     Call<List<Produto>> obterProduto();
 }
